@@ -1,12 +1,125 @@
-<!DOCTYPE html5>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title><h1>Christian Dawley's home on GitPages/GitHub io</h1>/title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Christian Dawley @ Github Pages</title>
+
+    <!--Bootstrap Stylesheet-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
+
 <body>
-<h1>Christian Dawley's home on GitPages/GitHub io</h1>
-<hr>
-<h2>I guess you could say we're currently under development<h2>
-<h4>Plese try again soon!</h4>
+
+<!--contains the navbar-->
+
+<!--<div class="container" id="header-div">-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar-top">
+
+    <h2 class="navbar-brand" href="#">C.Dawley</h2>
+
+    <ul class="navbar-nav mr-auto">
+        <!--About serves as Home page "#link-about"-->
+        <li class="nav-item active" id="about">
+            <a class="nav-link" id="link-about" href="#div-about">About Me<span class="sr-only">(current)</span></a>
+        </li>
+        <!--Link to portfolio "#link-portfolio" -->
+        <li class="nav-item" id="portfolio">
+            <a class="nav-link" id="link-portfolio" href="#div-portfolio">Portfolio </a>
+        </li>
+        <!--Contact form "#link-contact" -->
+        <li class="nav-item" id="contact">
+            <a class="nav-link" id="link-contact" href="#div-contact">Contact </a>
+        </li>
+
+</nav>
+
+<!--</div>-->
+
+    <!-- Contains main 'body' of site below the Navbar, with all sections that can be navigated -->
+    <div class="container">
+        <div class="row-xl-12 row-lg-12 row-md-8 row-sm-8 row-xs-4">
+
+
+            <!-- Content for "About" section ( #div-about ), with photo & brief biographic statement -->
+            <div class="container" id="div-about">
+
+                <h1 class="">About Me</h1>
+                <p class="lead">My name is Christian Dawley.</p>
+
+            </div>
+
+            <!-- Content for "Portfolio" section ( #div-portfolio ), with form -->
+            <div class="container d-none" id="div-portfolio">
+
+                <h1 class="">Portfolio</h1>
+                <p class="lead">Portfolio will be placed here</p>
+
+            </div>
+
+
+            <!-- Content for "Contact" section ( #div-contact ), with form -->
+            <div class="container d-none" id="div-contact">
+
+                    <h1 class="">Contact Me</h1>
+                    <p class="lead">Contact form will be placed here.</p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--JQuery & Bootstrap-related JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- Page-related JS -->
+<script type="text/javascript">
+
+    let divAbout = $("#div-about");
+    let divPortfolio = $("#div-portfolio");
+    let divContact = $("#div-contact");
+
+// Function adds .d-none to all of the content div's
+function dNoneAll() {
+            divAbout.addClass("d-none");
+            divPortfolio.addClass("d-none");
+            divContact.addClass("d-none");
+};
+
+$(document).ready(function() {
+
+
+
+    // on click of a nav link, .active is removed/added accordingly (originally from user 'gearmobile' @ codepen)
+    $("#navbar-top .navbar-nav a").on("click", function () {
+        $("#navbar-top .navbar-nav").find("li.active").removeClass("active");
+        let navClicked = $(this).parent("li");
+        navClicked.addClass("active");
+        whatLink = navClicked.attr("id");
+        // call dNoneAll(), then remove .d-none from the clicked-link's corresponding div
+        dNoneAll();
+        switch (whatLink) {
+            case "about":
+                divAbout.removeClass("d-none");
+                break;
+            case "portfolio":
+                divPortfolio.removeClass("d-none");
+                break;
+            case "contact":
+                divContact.removeClass("d-none");
+                break;
+        };
+    });
+
+});
+
+</script>
 </body>
-</body>
+
+</html>
